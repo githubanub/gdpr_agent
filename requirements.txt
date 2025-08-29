@@ -16,3 +16,4 @@ uvicorn
 fastapi
 pinecone
 pinecone[grpc]
+gunicorn
