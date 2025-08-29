@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, APIRouter
 from pydantic import BaseModel
 
-app = FastAPI()
+app = FastAPI(title="GDPR Agent API")
 
 class UserInput(BaseModel):
     user_input: str
@@ -20,9 +20,9 @@ def main(user_input="What is GDPR?"):
     print(ai_messages)
     return ai_messages[0] if ai_messages else None
 
-@app.post("/ask")
-async def ask_gdpr(input: UserInput):
-    answer = main(input.user_input)
+@app.post("/ask_gdpr_bot")
+async def ask_gdpr(user_question: str):
+    answer = main(user_question)
     return {"answer": answer}
 
 # Optional: keep CLI entry point
