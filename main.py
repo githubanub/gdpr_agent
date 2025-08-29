@@ -25,6 +25,10 @@ async def ask_gdpr(user_question: str):
     answer = main(user_question)
     return {"answer": answer}
 
+@app.get("/healthz")
+def health():
+    return {"ok": True}
+
 # Optional: keep CLI entry point
 if __name__ == "__main__":
     main()
